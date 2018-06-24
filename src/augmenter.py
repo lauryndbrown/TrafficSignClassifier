@@ -43,6 +43,12 @@ class DataAugmenter:
         rotated_image = cv2.warpAffine(img,M,(cols,rows))
         return rotated_image
     
+    def skew(self, img, point_a, point_b):
+        img = img.copy()
+        M = cv2.getPerspectiveTransform(point_a, point_b)
+        new_img = cv2.warpPerspective(img, M, img.shape[:2])
+        return new_img
+        
     def flip(self, img,  direction):
         img = img.copy()
         assert direction in (self.HORIZONTAL_FLIP, self.VERTICAL_FLIP, self.CORNER_FLIP)
