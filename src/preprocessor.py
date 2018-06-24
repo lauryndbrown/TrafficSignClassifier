@@ -18,13 +18,6 @@ class Preprocessor:
         img = img.copy()
         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         return img
-       
-    def normalize(self, img):
-        img = img.copy()
-        img = img.astype(np.float32)
-        for index, pixel in enumerate(img):
-            img[index] = pixel/256.0 
-        return img
     
     def resize(self, img, size=IMAGE_SIZE):
         img = img.copy()

@@ -29,25 +29,12 @@ class DataAugmenter:
         blur = cv2.blur(img, box_size)
         return blur
 
-    # Skipped
-    # def add_noise(self, img, mean=(50,50,50), stddev=(50,50,50)):
-    #     img = img.copy()
-    #     noisy_img = cv2.randn(img, mean, stddev)
-    #     return noisy_img
-
     def translation(self, img, x=10, y=10):
         img = img.copy()
         rows,cols = img.shape[0], img.shape[1]
         M = np.float32([[1,0,x],[0,1,y]])
         translated_image = cv2.warpAffine(img, M, (cols,rows))
         return translated_image
-
-    # def skew(self, img, point1, point2):
-    #     img = img.copy()
-    #     rows,cols,_ = img.shape
-    #     M = cv2.getAffineTransform(point1, point2)
-    #     skewed_img = cv2.warpAffine(img, M, (cols,rows))
-    #     return skewed_img
 
     def rotation(self, img, degrees=90):
         img = img.copy()
